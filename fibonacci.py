@@ -21,8 +21,11 @@ def fibonacci_math(n):
 
 def main():
     fibonacci_number = fibonacci_math(args.num)
-    print('The Fibonacci number for', args.num, 'is', fibonacci_number)
-
+    if args.verbose:
+        print('The Fibonacci number for', args.num, 'is', fibonacci_number)
+    else:
+        print(fibonacci_number)
+        
 args = get_args()
 
 
