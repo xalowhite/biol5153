@@ -1,8 +1,17 @@
 #! /usr/bin/env python3
 
-def get_input():
-    number = int(input('Enter the number: '))
-    return number
+import argparse
+
+def get_args():
+    parser = argparse.ArgumentParser(description='This script returns the Fibonacci numebr at \
+        at a specified location in the Fibonacci sequence')
+    
+    parser.add_argument('num', help='The Fibonacci number you wish to calculate', type=int)
+    parser.add_argument('-v', '--verbose', help='Print verbose output or not', action='store_true')
+    
+    args = parser.parse_args()
+    return args
+
 
 def fibonacci_math(n):
     a, b = 0, 1
@@ -11,9 +20,12 @@ def fibonacci_math(n):
     return a
 
 def main():
-    input_num = get_input()
-    fibonacci_number = fibonacci_math(input_num)
-    print('The Fibonacci number for', input_num, 'is', fibonacci_number)
+    fibonacci_number = fibonacci_math(args.num)
+    print('The Fibonacci number for', args.num, 'is', fibonacci_number)
+
+args = get_args()
+
 
 if __name__ == '__main__':
     main()
+
